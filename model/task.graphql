@@ -1,0 +1,32 @@
+"""
+@model
+@datasync
+"""
+type Task {
+  id: ID!
+  title: String!
+  description: String!
+  status: TaskStatus
+  type: String
+  priority: Int
+  public: Boolean
+
+  """ @oneToMany(field: 'note')  """
+  comments: [Comment]!
+}
+
+"""
+@model(delete: false)
+"""
+type Comment {
+  id: ID!
+  message: String!
+  author: String!
+}
+
+enum TaskStatus {
+  OPEN
+  ASSIGNED
+  COMPLETE
+}
+

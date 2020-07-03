@@ -1,0 +1,31 @@
+# Write your query or mutation here
+mutation create {
+  createTask(input: { title: "test", description: "test" }) {
+    id
+    title
+    description
+    updatedAt
+  }
+}
+
+query allDataUnfilterer {
+  findTasks(filter: {}, page: { limit: 10 }) {
+    items {
+      title
+      description
+      public
+    }
+    offset
+    count
+  }
+}
+
+query sync {
+  syncTasks(lastSync: "1593776852590", filter: { title: { eq: "test" } }) {
+    items {
+      id
+      title
+    }
+    lastSync
+  }
+}
